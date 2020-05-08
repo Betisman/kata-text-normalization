@@ -61,5 +61,10 @@ describe("text normalization", () => {
             const output = english('telephone my house');
             expect(output).to.eql(['TELEPHONE', 'HOUSE']);
         });
+
+        it('should parse to singular', () => {
+            const output = english('houses cars');
+            expect(output).to.eql(['HOUSE', 'CAR']);
+        })
     });
 });

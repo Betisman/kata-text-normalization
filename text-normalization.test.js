@@ -28,6 +28,11 @@ describe("text normalization", () => {
             const output = spanish('teléfono mi casa');
             expect(output).to.eql(['TELEFONO', 'CASA']);
         })
+
+        it('should parse to singular', () => {
+            const output = spanish('casas coches');
+            expect(output).to.eql(['CASA', 'COCHE']);
+        })
     });
 
     describe("english normalizer", () => {

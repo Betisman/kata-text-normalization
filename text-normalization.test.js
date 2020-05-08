@@ -18,5 +18,10 @@ describe("text normalization", () => {
             const output = spanish('casá blanca');
             expect(output).to.eql(['CASA', 'BLANCA']);
         });
+
+        it('should remove useless words', () => {
+            const output = spanish('teléfono mi casa');
+            expect(output).to.eql(['TELEFONO', 'CASA']);
+        })
     });
 });

@@ -4,9 +4,11 @@ module.exports = language => input => {
         EN: ['MY', 'OF']
     };
     const diacriticalRemoval = word => word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const symbolRemoval = word => word.replace(',', '');
     const uselessRemoval = word => !uselessWordsByLang[language].includes(word);
     return input.split(' ')
         .map(word => word.toUpperCase())
         .map(diacriticalRemoval)
+        .map(symbolRemoval)
         .filter(uselessRemoval);
 };

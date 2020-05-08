@@ -19,6 +19,11 @@ describe("text normalization", () => {
             expect(output).to.eql(['CASA', 'BLANCA']);
         });
 
+        it('should remove symbols', () => {
+            const output = spanish('teléfono, mi casa');
+            expect(output).to.eql(['TELEFONO', 'CASA']);
+        })
+
         it('should remove useless words', () => {
             const output = spanish('teléfono mi casa');
             expect(output).to.eql(['TELEFONO', 'CASA']);
@@ -42,9 +47,14 @@ describe("text normalization", () => {
             expect(output).to.eql(['CHOCOLATE', 'CREPE']);
         });
 
+        it('should remove symbols', () => {
+            const output = english('telephone, my house');
+            expect(output).to.eql(['TELEPHONE', 'HOUSE']);
+        });
+
         it('should remove useless words', () => {
             const output = english('telephone my house');
             expect(output).to.eql(['TELEPHONE', 'HOUSE']);
-        })
+        });
     });
 });

@@ -1,7 +1,10 @@
 module.exports = language => input => {
-    const uselessWords = ['MI', 'DE'];
+    const uselessWordsByLang = {
+        ES: ['MI', 'DE'],
+        EN: ['MY', 'OF']
+    };
     const diacriticalRemoval = word => word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const uselessRemoval = word => !uselessWords.includes(word);
+    const uselessRemoval = word => !uselessWordsByLang[language].includes(word);
     return input.split(' ')
         .map(word => word.toUpperCase())
         .map(diacriticalRemoval)
